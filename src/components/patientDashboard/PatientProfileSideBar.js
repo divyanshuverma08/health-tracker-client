@@ -1,12 +1,13 @@
 import logo from "../../assets/img/landingPage/medical-logo.png";
 import dashboard from "../../assets/img/dashboard/dashboard.jpeg";
 import reports from "../../assets/img/dashboard/report2_pbl.png";
-import patient_history from "../../assets/img/dashboard/patient_history.jpeg";
 import patient_profile from "../../assets/img/dashboard/patient2_pbl.png";
 import logoutimg from "../../assets/img/dashboard/logout.png";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { url } from "../../environment";
+import QRCode from "react-qr-code";
+import React from "react";
 
 const PatientProfileSideBar = (props) => {
   const navigate = useNavigate();
@@ -98,7 +99,15 @@ const PatientProfileSideBar = (props) => {
           </div>
         </nav>
 
-        <div className=" mx-auto mt-56 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
+        <div style={{ height: "auto", margin: "0 auto", maxWidth: 180, width: "100%" }}>
+          <QRCode
+          size={256}
+          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+          value={`${url}/patient/info/${localStorage.getItem("healthID")}`}
+          viewBox={`0 0 256 256`}
+          />
+        </div>
+        <div className=" mx-auto mt-16 py-1    bg-primary  rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary w-2/5  ">
           <button className="font-bold  flex items-center" onClick={logout}>
             <img src={logoutimg} className="h-4 px-2 " alt="logout"></img>logout
           </button>

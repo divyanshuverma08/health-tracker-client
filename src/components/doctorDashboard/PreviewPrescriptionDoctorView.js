@@ -4,6 +4,7 @@ import Footer from "../landingPage/Footer";
 import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import { useEffect, useState } from "react";
 import { url } from "../../environment";
+import React from "react";
 
 const PreviewPrescriptionDoctorView = (props) => {
   // printprescriptionstart
@@ -49,14 +50,11 @@ const PreviewPrescriptionDoctorView = (props) => {
   const [patient, setPatient] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -160,14 +158,12 @@ const PreviewPrescriptionDoctorView = (props) => {
             <div className="flex">
               <h1 className="font-bold">Patient Name : </h1>
               <div className="flex">
-                <h2 className="pl-1">{patient.name.firstName}</h2>
-                <h2 className="pl-1">{patient.name.middleName}</h2>
-                <h2 className="pl-1">{patient.name.surName}</h2>
+                <h2 className="pl-1">{patient.name.firstName} {patient.name.surName}</h2>
               </div>
             </div>
             <div className="flex">
               <h1 className="font-bold mr-2">Address: </h1>
-              <h4>{`${patient.address.building},  ${patient.address.city},  ${patient.address.taluka},  ${patient.address.district},  ${patient.address.state},  ${patient.address.pincode}`}</h4>
+              <h4>{`${patient.address.building},  ${patient.address.city},  ${patient.address.state},  ${patient.address.pincode}`}</h4>
             </div>
           </div>
           <div>

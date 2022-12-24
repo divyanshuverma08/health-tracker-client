@@ -4,6 +4,7 @@ import PatientReportCompo from "./PatientReportCompo";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientReports = (props) => {
   const navigate = useNavigate();
@@ -22,8 +23,6 @@ const PatientReports = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -40,8 +39,6 @@ const PatientReports = (props) => {
       address: {
         building: "",
         city: "",
-        taluka: "",
-        district: "",
         state: "",
         pincode: "",
       },

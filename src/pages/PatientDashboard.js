@@ -8,6 +8,7 @@ import eye from "../assets/img/dashboard/eye.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { url } from "../environment";
+import React from "react";
 
 const PatientDashboard = (props) => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const PatientDashboard = (props) => {
   const [patient, setPatient] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     dob: "",
@@ -27,8 +27,6 @@ const PatientDashboard = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -45,8 +43,6 @@ const PatientDashboard = (props) => {
       address: {
         building: "",
         city: "",
-        taluka: "",
-        district: "",
         state: "",
         pincode: "",
       },
@@ -137,7 +133,6 @@ const PatientDashboard = (props) => {
                   </div>
                   <div className="flex ml-2   ">
                     <h1 className="pl-1">{patient.name.firstName}</h1>
-                    <h1 className="pl-1">{patient.name.middleName}</h1>
                     <h1 className="pl-1">{patient.name.surName}</h1>
                   </div>
                 </div>

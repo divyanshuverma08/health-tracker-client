@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import { useEffect, useState } from "react";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientReportsDoctorView = (props) => {
   const navigate = useNavigate();
@@ -21,8 +22,6 @@ const PatientReportsDoctorView = (props) => {
     orgAddress: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -37,8 +36,6 @@ const PatientReportsDoctorView = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },

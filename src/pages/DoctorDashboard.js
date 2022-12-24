@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 import { url } from "../environment";
+import React from "react";
 
 const DoctorDashboard = (props) => {
   const [Loading, setLoading] = useState(false);
@@ -18,15 +19,12 @@ const DoctorDashboard = (props) => {
   const [doctor, setDoctor] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     org: "",
     orgAddress: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -41,8 +39,6 @@ const DoctorDashboard = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -279,9 +275,7 @@ const DoctorDashboard = (props) => {
                       <h1>Name : </h1>
                     </div>
                     <div className="flex justify-between">
-                      <h1 className="pl-3">{`${patient.name.firstName} `}</h1>
-                      <h1 className="pl-1">{`${patient.name.middleName} `}</h1>
-                      <h1 className="pl-1">{patient.name.surName}</h1>
+                      <h1 className="pl-3">{`${patient.name.firstName} ${patient.name.surName}`}</h1>
                     </div>
                   </div>
                   <div className="flex">

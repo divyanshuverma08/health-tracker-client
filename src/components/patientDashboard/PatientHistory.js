@@ -4,6 +4,7 @@ import PatientHistoryCompo from "./PatientHistoryCompo";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientHistory = (props) => {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ const PatientHistory = (props) => {
   const [patient, setPatient] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     dob: "",
@@ -22,8 +22,6 @@ const PatientHistory = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -40,8 +38,6 @@ const PatientHistory = (props) => {
       address: {
         building: "",
         city: "",
-        taluka: "",
-        district: "",
         state: "",
         pincode: "",
       },

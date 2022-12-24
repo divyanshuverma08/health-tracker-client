@@ -21,15 +21,12 @@ const DoctorProfile = (props) => {
   const [doctor, setDoctor] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     org: "",
     orgAddress: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -44,8 +41,6 @@ const DoctorProfile = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -99,9 +94,7 @@ const DoctorProfile = (props) => {
               <img src={name} className="h-8 w-8  " />
               <div className="flex mt-1">
                 <h2 className="ml-2">Dr.</h2>
-                <h2 className="ml-2">{doctor.name.firstName}</h2>
-                <h2 className="ml-2">{doctor.name.middleName}</h2>
-                <h2 className="ml-2">{doctor.name.surName}</h2>
+                <h2 className="ml-2">{doctor.name.firstName} {doctor.name.surName}</h2>
               </div>
             </div>
             <div className="flex ml-8 mt-4">
@@ -129,7 +122,7 @@ const DoctorProfile = (props) => {
               <img src={home} className="h-6 w-6" />
               <div className="ml-4">
                 <h2>
-                  {`${doctor.address.building},  ${doctor.address.city},  ${doctor.address.taluka},  ${doctor.address.district},  ${doctor.address.state}-  ${doctor.address.pincode}`}
+                  {`${doctor.address.building},  ${doctor.address.city},  ${doctor.address.state}-  ${doctor.address.pincode}`}
                 </h2>
               </div>
             </div>
@@ -161,8 +154,8 @@ const DoctorProfile = (props) => {
 
             <div className="flex mt-3">
               <img src={hospital_contact} className="w-5 h-5 " />
-
-              <h1 className="ml-4">{doctor.orgNumber}</h1>
+              <h2 className="ml-4">+91</h2>
+              <h2 className="ml-2">{doctor.orgNumber}</h2>
             </div>
             {/* <div className="flex mt-3">
               <img src={mail} className="w-5 h-6 " />
@@ -174,7 +167,7 @@ const DoctorProfile = (props) => {
               <img src={address} className="h-7 w-8" />
               <div className="ml-4 ">
                 <h2>
-                  {`${doctor.orgAddress.building},  ${doctor.orgAddress.city},  ${doctor.orgAddress.taluka},  ${doctor.orgAddress.district},  ${doctor.orgAddress.state}-  ${doctor.orgAddress.pincode}`}
+                  {`${doctor.orgAddress.building},  ${doctor.orgAddress.city},  ${doctor.orgAddress.state}-  ${doctor.orgAddress.pincode}`}
                 </h2>
               </div>
             </div>

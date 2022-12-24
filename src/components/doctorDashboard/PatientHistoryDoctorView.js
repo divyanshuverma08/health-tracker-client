@@ -4,6 +4,7 @@ import doctor_profile from "../../assets/img/dashboard/doctor2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientHistoryDoctorView = (props) => {
   const navigate = useNavigate();
@@ -13,15 +14,12 @@ const PatientHistoryDoctorView = (props) => {
   const [doctor, setDoctor] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     org: "",
     orgAddress: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -36,8 +34,6 @@ const PatientHistoryDoctorView = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },

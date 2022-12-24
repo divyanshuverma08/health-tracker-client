@@ -77,6 +77,7 @@ export default function Login(props) {
       setLoading(false);
     } else {
       localStorage.setItem("jwt",data.token);
+      localStorage.setItem("healthID",data.patient.healthID);
       setLoading(false);
       props.settoastCondition({
         status: "success",
