@@ -62,7 +62,10 @@ export default function Register(props) {
 
   useEffect(() => {
     const auth = async () => {
-      const res = await fetch(url + "/auth",{credentials: 'include'});
+      const res = await fetch(url + "/auth",{headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.msg === "Doctor Login Found") {
         navigate("/doctor/dashboard");
@@ -108,6 +111,7 @@ export default function Register(props) {
           status: "success",
           message: "Your Registration done Successfully!",
         });
+        localStorage.setItem("jwt",data.token);
         props.setToastShow(true);
         navigate("/patient/dashboard");
       }

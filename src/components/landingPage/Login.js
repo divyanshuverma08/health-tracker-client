@@ -18,7 +18,10 @@ export default function Login(props) {
 
   useEffect(() => {
     const auth = async () => {
-      const res = await fetch(url + "/auth",{credentials: 'include'});
+      const res = await fetch(url + "/auth",{headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.msg === "Doctor Login Found") {
         navigate("/doctor/dashboard");
@@ -63,12 +66,9 @@ export default function Login(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-      credentials: 'include'
     });
 
     const data = await res.json();
-
-    console.log(data);
 
     if (data.errors) {
       setUsernameError(data.errors.healthID);
@@ -76,6 +76,7 @@ export default function Login(props) {
       setPasswordError(data.errors.password);
       setLoading(false);
     } else {
+      localStorage.setItem("jwt",data.token);
       setLoading(false);
       props.settoastCondition({
         status: "success",
@@ -97,7 +98,6 @@ export default function Login(props) {
         email,
         password,
       }),
-      credentials: 'include'
     });
 
     const data = await res.json();
@@ -123,6 +123,7 @@ export default function Login(props) {
         status: "success",
         message: "Logged in Successfully!!!",
       });
+      localStorage.setItem("jwt",data.token);
       props.setToastShow(true);
       if (path === "/login/doctor") {
         navigate("/doctor/dashboard");

@@ -63,10 +63,12 @@ const PatientDashboard = (props) => {
   };
   useEffect(() => {
     async function getpatient() {
-      const res = await fetch(url + "/getpatient",{credentials: 'include'});
+      const res = await fetch(url + "/getpatient",{headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
-        console.log(data);
         props.settoastCondition({
           status: "info",
           message: "Please Login to proceed!!!",
