@@ -77,7 +77,11 @@ const PreviewPrescription = (props) => {
   });
   useEffect(() => {
     async function fetchprescription() {
-      const res = await fetch(`${url}/prescription/${props.prescriptionID}`,{credentials: 'include'});
+      const res = await fetch(`${url}/prescription/${props.prescriptionID}`,
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
         props.settoastCondition({
@@ -98,7 +102,11 @@ const PreviewPrescription = (props) => {
       }
     }
     async function fetchpatient() {
-      const res = await fetch(url + "/getpatient",{credentials: 'include'});
+      const res = await fetch(url + "/getpatient",
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
 
       if (data.AuthError) {

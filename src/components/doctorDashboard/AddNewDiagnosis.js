@@ -89,7 +89,11 @@ const AddNewDiagnosis = (props) => {
 
   useEffect(() => {
     async function getDoctor() {
-      const res = await fetch(url + "/getdoctor",{credentials: 'include'});
+      const res = await fetch(url + "/getdoctor",
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
         props.settoastCondition({
@@ -117,9 +121,9 @@ const AddNewDiagnosis = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
       },
-      body: JSON.stringify(prescription),
-      credentials: 'include'
+      body: JSON.stringify(prescription)
     });
     const data = await res.json();
     if (data.AuthError) {

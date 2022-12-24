@@ -63,7 +63,8 @@ const PatientDashboard = (props) => {
   };
   useEffect(() => {
     async function getpatient() {
-      const res = await fetch(url + "/getpatient",{headers: {
+      const res = await fetch(url + "/getpatient",
+      {headers: {
         "Content-Type": "application/json",
         "authorization":"Bearer " + localStorage.getItem("jwt")
       }});

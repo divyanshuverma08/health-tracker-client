@@ -56,7 +56,11 @@ const PatientHistoryDoctorView = (props) => {
 
   useEffect(() => {
     async function getdoctor() {
-      const res = await fetch(url + "/getdoctor",{credentials: 'include'});
+      const res = await fetch(url + "/getdoctor",
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
         props.settoastCondition({
@@ -71,7 +75,11 @@ const PatientHistoryDoctorView = (props) => {
     }
     async function getpatient() {
       if (props.healthID.length === 12) {
-        const res = await fetch(`${url}/searchpatient/${props.healthID}`,{credentials: 'include'});
+        const res = await fetch(`${url}/searchpatient/${props.healthID}`,
+        {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
         const data = await res.json();
 
         if (data.AuthError) {

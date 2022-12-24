@@ -16,9 +16,8 @@ const PatientListCompo = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      },
-      credentials: 'include'
-    });
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
     const data = res.json();
     if (data.AuthError) {
       props.settoastCondition({

@@ -7,10 +7,10 @@ const DoctorListCompo = (props) => {
   const navigate = useNavigate();
   const deleteDoctor = async () => {
     const res = await fetch(`${url}/deletedoctor/${props.id}`, {
-      credentials: 'include',
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
       },
     });
     const data = res.json();

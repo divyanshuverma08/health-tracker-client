@@ -65,8 +65,9 @@ export default function Register(props) {
       const res = await fetch(url + "/register/doctor", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-        },
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      },
         body: JSON.stringify(doctor),
         credentials: 'include'
       });

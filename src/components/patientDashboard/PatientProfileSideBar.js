@@ -11,7 +11,11 @@ import { url } from "../../environment";
 const PatientProfileSideBar = (props) => {
   const navigate = useNavigate();
   const logout = async () => {
-    const res = await fetch(url + "/logout",{credentials: 'include'});
+    const res = await fetch(url + "/logout",
+    {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
     props.settoastCondition({
       status: "success",
       message: "Logged out Successfully!!!",

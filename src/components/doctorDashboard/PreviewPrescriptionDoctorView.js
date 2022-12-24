@@ -65,7 +65,10 @@ const PreviewPrescriptionDoctorView = (props) => {
     async function fetchprescription() {
       const res = await fetch(
         `${url}/viewprescription/${props.healthID}/${props.prescriptionID}`,
-        {credentials: 'include'}
+        {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }}
       );
       const data = await res.json();
       if (data.AuthError) {
@@ -87,7 +90,11 @@ const PreviewPrescriptionDoctorView = (props) => {
       }
     }
     async function fetchpatient() {
-      const res = await fetch(`${url}/searchpatient/${props.healthID}`,{credentials: 'include'});
+      const res = await fetch(`${url}/searchpatient/${props.healthID}`,
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
 
       if (data.AuthError) {

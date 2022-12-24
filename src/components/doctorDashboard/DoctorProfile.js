@@ -64,7 +64,11 @@ const DoctorProfile = (props) => {
 
   useEffect(() => {
     async function getdoctor() {
-      const res = await fetch(url +"/getdoctor",{credentials: 'include'});
+      const res = await fetch(url +"/getdoctor",
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
         props.settoastCondition({

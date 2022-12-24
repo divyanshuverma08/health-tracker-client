@@ -61,7 +61,11 @@ const DoctorDashboard = (props) => {
 
   useEffect(() => {
     async function getdoctor() {
-      const res = await fetch(url + "/getdoctor",{credentials: 'include'});
+      const res = await fetch(url + "/getdoctor",
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
       if (data.AuthError) {
         props.settoastCondition({
@@ -77,7 +81,11 @@ const DoctorDashboard = (props) => {
     async function getpatient() {
       setLoading(true);
       if (props.healthID.length === 12) {
-        const res = await fetch(`${url}/searchpatient/${props.healthID}`,{credentials: 'include'});
+        const res = await fetch(`${url}/searchpatient/${props.healthID}`,
+        {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
         const data = await res.json();
 
         if (data.AuthError) {
@@ -117,7 +125,11 @@ const DoctorDashboard = (props) => {
     e.preventDefault();
     if (props.healthID.length === 12) {
       setLoading(true);
-      const res = await fetch(`${url}/searchpatient/${props.healthID}`,{credentials: 'include'});
+      const res = await fetch(`${url}/searchpatient/${props.healthID}`,
+      {headers: {
+        "Content-Type": "application/json",
+        "authorization":"Bearer " + localStorage.getItem("jwt")
+      }});
       const data = await res.json();
 
       if (data.AuthError) {
