@@ -11,11 +11,12 @@ import { url } from "../../environment";
 const DashboardSidebar = (props) => {
   const navigate = useNavigate();
   const logout = async () => {
-    const res = await fetch(url + "/logout",
-    {headers: {
-        "Content-Type": "application/json",
-        "authorization":"Bearer " + localStorage.getItem("jwt")
-      }});
+    // const res = await fetch(url + "/logout",
+    // {headers: {
+    //     "Content-Type": "application/json",
+    //     "authorization":"Bearer " + localStorage.getItem("jwt")
+    //   }});
+    localStorage.clear();
     props.settoastCondition({
       status: "success",
       message: "Logged out Successfully!!!",

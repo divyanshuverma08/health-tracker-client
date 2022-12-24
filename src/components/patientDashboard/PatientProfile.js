@@ -17,7 +17,6 @@ const PatientProfile = (props) => {
     healthID: "",
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     dob: "",
@@ -28,8 +27,6 @@ const PatientProfile = (props) => {
     address: {
       building: "",
       city: "",
-      taluka: "",
-      district: "",
       state: "",
       pincode: "",
     },
@@ -46,8 +43,6 @@ const PatientProfile = (props) => {
       address: {
         building: "",
         city: "",
-        taluka: "",
-        district: "",
         state: "",
         pincode: "",
       },
@@ -98,9 +93,7 @@ const PatientProfile = (props) => {
             <div className="flex ml-8 ">
               <img src={name} className="h-8 w-8  " />
               <div className="flex mt-1">
-                <h2 className="ml-2">{patient.name.firstName}</h2>
-                <h2 className="ml-2">{patient.name.middleName}</h2>
-                <h2 className="ml-2">{patient.name.surName}</h2>
+                <h2 className="ml-2">{patient.name.firstName} {patient.name.surName}</h2>
               </div>
             </div>
             <div className="flex ml-8 mt-4">
@@ -133,7 +126,7 @@ const PatientProfile = (props) => {
               <div className="ml-4">
                 <h2>
                   {" "}
-                  {`${patient.address.building},  ${patient.address.city},  ${patient.address.taluka},  ${patient.address.district},  ${patient.address.state},  ${patient.address.pincode}`}
+                  {`${patient.address.building},  ${patient.address.city},  ${patient.address.state},  ${patient.address.pincode}`}
                 </h2>
               </div>
             </div>
@@ -144,8 +137,7 @@ const PatientProfile = (props) => {
             </h1>
             <div className="flex mt-4 ">
               <img src={name} className="h-8 w-8" />
-              <h1 className="mx-2"> {patient.contactPerson.name.firstName}</h1>
-              <h1 className="mx-2">{patient.contactPerson.name.surName}</h1>
+              <h1 className="mx-2">{patient.contactPerson.name.firstName} {patient.contactPerson.name.surName}</h1>
             </div>
 
             <div className="flex mt-3">
@@ -164,7 +156,7 @@ const PatientProfile = (props) => {
               <div className="ml-4">
                 <h2>
                   {" "}
-                  {`${patient.contactPerson.address.building},  ${patient.contactPerson.address.city},  ${patient.contactPerson.address.taluka},  ${patient.contactPerson.address.district},  ${patient.contactPerson.address.state},  ${patient.contactPerson.address.pincode}`}
+                  {`${patient.contactPerson.address.building},  ${patient.contactPerson.address.city},  ${patient.contactPerson.address.state},  ${patient.contactPerson.address.pincode}`}
                 </h2>
               </div>
             </div>
