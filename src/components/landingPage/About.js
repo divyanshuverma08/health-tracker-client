@@ -7,10 +7,11 @@ import admin_git from "../../assets/img/dashboard/admin-git.png";
 import admin_insta from "../../assets/img/dashboard/admin-insta-2.png";
 import admin_linkedin from "../../assets/img/dashboard/admin-linkedin.png";
 import admin_card_profile from "../../assets/img/dashboard/admin-card-profile.png";
+import React from "react";
 const About = () => {
   return (
     <div className="body  lg:overflow-hidden lg:h-screen max-h-min flex flex-col h-screen">
-      <Navbar></Navbar>
+      <Navbar home={true}/>
 
       <div className=" bg-secoundry font-poppins over ">
         <div className="  flex justify-center">

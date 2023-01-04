@@ -10,6 +10,7 @@ import healthid from "../../assets/img/dashboard/patient-profile-healthid.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientProfile = (props) => {
   const navigate = useNavigate();

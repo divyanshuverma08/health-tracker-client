@@ -15,7 +15,6 @@ const PatientReportsDoctorView = (props) => {
   const [doctor, setDoctor] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     org: "",

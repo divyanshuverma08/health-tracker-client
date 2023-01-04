@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import delete_btn from "../../assets/img/dashboard/delete.png";
 import { url } from "../../environment";
+import React from "react";
 
 const PatientListCompo = (props) => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const PatientListCompo = (props) => {
     <div className="grid grid-cols-9">
       <h1 className="col-start-1">{props.index + 1}</h1>
       <h1 className="col-span-2">{props.patient.healthID}</h1>
-      <h1 className="col-span-2">{`${props.patient.name.firstName} ${props.patient.name.middleName} ${props.patient.name.surName}`}</h1>
+      <h1 className="col-span-2">{`${props.patient.name.firstName} ${props.patient.name.surName}`}</h1>
       <h1 className="col-span-1">{dob}</h1>
       <div className="col-span-2 pr-2">
         <h1 className="text-lg ">{props.patient.mobile}</h1>

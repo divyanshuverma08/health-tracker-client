@@ -1,10 +1,11 @@
 import React from "react";
 import logo from "../../assets/img/landingPage/medical-logo.png";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <nav className="lg:bg-white lg:w-screen lg:h-14 shadow-sm lg:px-16 lg:py-3 flex justify-items-center items-center  w-full ">
       <img
@@ -27,13 +28,13 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <button className="bg-primary lg:py-2 lg:px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary py-1 px-2 mr-2">
+      {props.home ? <button className="bg-primary lg:py-2 lg:px-3 rounded font-semibold font-poppins shadow-sm hover:bg-bgsecondary py-1 px-2 mr-2">
         {location.pathname === "/register" ? (
           <Link to="/">Login</Link>
         ) : (
           <Link to="/register">Register</Link>
         )}
-      </button>
+      </button> : <strong><Link onClick={()=>{navigate(-1)}}>Profile</Link></strong>}
     </nav>
   );
 }
