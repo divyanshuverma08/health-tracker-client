@@ -114,6 +114,7 @@ export default function Register(props) {
             message: "Your Registration done Successfully!",
           });
           localStorage.setItem("jwt", data.token);
+          localStorage.setItem("healthID",data.patient.healthID);
           props.setToastShow(true);
           navigate("/patient/dashboard");
         }
