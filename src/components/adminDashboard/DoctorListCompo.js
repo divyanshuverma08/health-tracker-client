@@ -34,7 +34,7 @@ const DoctorListCompo = (props) => {
       <h1 className="col-start-1">{props.index + 1}</h1>
       <div className="col-span-2 flex">
         <h1>Dr.</h1>
-        <h1 className="ml-1">{`${props.doctor.name.firstName} ${props.doctor.name.middleName} ${props.doctor.name.surName}`}</h1>
+        <h1 className="ml-1">{`${props.doctor.name.firstName} ${props.doctor.name.surName}`}</h1>
       </div>
       <h1 className="col-span-2">{props.doctor.org}</h1>
       <h1 className="col-span-1">{props.doctor.specialization[0].special}</h1>

@@ -134,7 +134,7 @@ export default function Register(props) {
   };
   return (
     <div className="body overflow-hidden">
-      <Navbar></Navbar>
+      <Navbar home={true}/>
       <div className="bg-secoundry w-full">
         <div className="">
           <div className=" flex justify-center mt-4">

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import eye from "../../assets/img/dashboard/eye.png";
+import React from "react";
 
 const PatientHistoryCompo = (props) => {
   const convertDatetoString = (dateString) => {

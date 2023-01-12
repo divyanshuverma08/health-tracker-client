@@ -28,7 +28,7 @@ const Contact = (props) => {
 
   return (
     <div className="body w-full ">
-      <Navbar></Navbar>
+      <Navbar home={true}/>
 
       <div className="bg-secoundry ">
         <div className="">

@@ -12,7 +12,6 @@ const PatientReports = (props) => {
   const [patient, setPatient] = useState({
     name: {
       firstName: "",
-      middleName: "",
       surName: "",
     },
     dob: "",

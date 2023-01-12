@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import PatientProfile from "./components/patientDashboard/PatientProfile";
 import DoctorProfile from "./components/doctorDashboard/DoctorProfile";
 import PatientReports from "./components/patientDashboard/PatientReports";
+import Prediction from "./components/patientDashboard/Prediction";
 import AddNewDiagnosis from "./components/doctorDashboard/AddNewDiagnosis";
 import { Routes, Route } from "react-router-dom";
 import PatientList from "./components/adminDashboard/PatientList";
@@ -85,6 +86,7 @@ function App() {
           }
         />
         <Route
+          exact
           path="patient"
           element={
             <PatientProfileSideBar
@@ -144,7 +146,16 @@ function App() {
             }
           />
         </Route>
-
+        <Route
+            exact
+            path="/patient/prediction"
+            element={
+              <Prediction
+                settoastCondition={settoastCondition}
+                setToastShow={setToastShow}
+              />
+            }
+          />
         <Route
           path="doctor"
           element={
