@@ -62,14 +62,14 @@ export default function Register(props) {
     setPasswordError("");
     if (doctor.password === confirmPassword) {
       setLoading(true);
+      try{
       const res = await fetch(url + "/register/doctor", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
         "authorization":"Bearer " + localStorage.getItem("jwt")
       },
-        body: JSON.stringify(doctor),
-        credentials: 'include'
+        body: JSON.stringify(doctor)
       });
 
       const data = await res.json();
@@ -95,6 +95,22 @@ export default function Register(props) {
         props.setToastShow(true);
         navigate("/admin/dashboard");
       }
+    }
+      catch(error){
+        if (error.AuthError) {
+        props.settoastCondition({
+          status: "info",
+          message: "Please Login to proceed!!!",
+        });
+        props.setToastShow(true);
+        navigate("/");
+      } else if (error.err) {
+        props.settoastCondition({
+          status: "error",
+          message: "Please enter all field properly!!!",
+        });
+        props.setToastShow(true);
+      }}
     } else {
       setPasswordError("Password Doesn't Matches");
     }

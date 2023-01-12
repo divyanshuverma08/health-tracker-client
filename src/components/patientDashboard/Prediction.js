@@ -62,7 +62,35 @@ class Prediction extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        console.log("Response Came")
+        if(response.statusCode=== 500){
+          this.props.settoastCondition({
+        status: "error",
+        message: "Could not predict",
+      });
+       this.props.setToastShow(true);
+       this.setState({
+          disease: "",
+    treatment: [],
+    prevention: [],
+    isLoaded: true
+        });
+          return 
+        }
+        if(response.result==="No Result"){
+          this.props.settoastCondition({
+        status: "error",
+        message: "Please select some disease to predict",
+      });
+       this.props.setToastShow(true);
+       this.setState({
+    disease: "",
+    treatment: [],
+    prevention: [],
+    isLoaded: true
+          
+        });
+          return 
+        }
         this.setState({
           disease: response.result,
           prevention: response.prevention,
