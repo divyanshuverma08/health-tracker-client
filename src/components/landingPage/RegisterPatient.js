@@ -62,10 +62,12 @@ export default function Register(props) {
 
   useEffect(() => {
     const auth = async () => {
-      const res = await fetch(url + "/auth",{headers: {
-        "Content-Type": "application/json",
-        "authorization":"Bearer " + localStorage.getItem("jwt")
-      }});
+      const res = await fetch(url + "/auth", {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
       const data = await res.json();
       if (data.msg === "Doctor Login Found") {
         navigate("/doctor/dashboard");
@@ -85,35 +87,46 @@ export default function Register(props) {
     setPasswordError("");
     if (patient.password === confirmPassword) {
       setLoading(true);
-      e.preventDefault();
-      const res = await fetch(url + "/register/patient", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(patient),
-        credentials: 'include'
-      });
 
-      const data = await res.json();
+      try {
+        const res = await fetch(url + "/register/patient", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patient),
+        });
 
-      if (data.errors) {
-        setLoading(false);
-        setErrors(data.errors);
-        props.settoastCondition({
-          status: "error",
-          message: "Please Enter all fields correctly!",
-        });
-        props.setToastShow(true);
-      } else {
-        setLoading(false);
-        props.settoastCondition({
-          status: "success",
-          message: "Your Registration done Successfully!",
-        });
-        localStorage.setItem("jwt",data.token);
-        props.setToastShow(true);
-        navigate("/patient/dashboard");
+        const data = await res.json();
+
+        if (data.errors) {
+          setLoading(false);
+          setErrors(data.errors);
+          props.settoastCondition({
+            status: "error",
+            message: "Please Enter all fields correctly!",
+          });
+          props.setToastShow(true);
+        } else {
+          setLoading(false);
+          props.settoastCondition({
+            status: "success",
+            message: "Your Registration done Successfully!",
+          });
+          localStorage.setItem("jwt", data.token);
+          props.setToastShow(true);
+          navigate("/patient/dashboard");
+        }
+      } catch (error) {
+        if (errors) {
+          setLoading(false);
+          setErrors(errors);
+          props.settoastCondition({
+            status: "error",
+            message: "Please Enter all fields correctly!",
+          });
+          props.setToastShow(true);
+        }
       }
     } else {
       setPasswordError("Password Doesn't Matches");
